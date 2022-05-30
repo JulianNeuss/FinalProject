@@ -1,15 +1,76 @@
 {
   "providers": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-cryptonate-dev-202449-authRole",
-      "UnauthRoleArn": "arn:aws:iam::580325682616:role/amplify-cryptonate-dev-202449-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::580325682616:role/amplify-cryptonate-dev-202449-authRole",
-      "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-cryptonate-dev-202449-deployment",
-      "UnauthRoleName": "amplify-cryptonate-dev-202449-unauthRole",
-      "StackName": "amplify-cryptonate-dev-202449",
-      "StackId": "arn:aws:cloudformation:us-east-1:580325682616:stack/amplify-cryptonate-dev-202449/44d5f0d0-b3a5-11ec-87dd-0e1dbb4bce1b",
-      "AmplifyAppId": "dlp5egh4usn93"
+      "AuthRoleName": "amplify-cryptonate-production-64400-authRole",
+      "UnauthRoleArn": "arn:aws:iam::580325682616:role/amplify-cryptonate-production-64400-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::580325682616:role/amplify-cryptonate-production-64400-authRole",
+      "Region": "sa-east-1",
+      "DeploymentBucketName": "amplify-cryptonate-production-64400-deployment",
+      "UnauthRoleName": "amplify-cryptonate-production-64400-unauthRole",
+      "StackName": "amplify-cryptonate-production-64400",
+      "StackId": "arn:aws:cloudformation:sa-east-1:580325682616:stack/amplify-cryptonate-production-64400/e39425b0-dfe3-11ec-a15b-0a47d423f62c",
+      "AmplifyAppId": "dsqi22srugxyw"
+    }
+  },
+  "storage": {
+    "DonationCampaigns": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cryptonate-production-64400-deployment/amplify-cfn-templates/storage/DonationCampaigns-cloudformation-template.json",
+        "logicalId": "storageDonationCampaigns"
+      },
+      "lastPushTimeStamp": "2022-05-30T07:51:26.135Z",
+      "output": {
+        "PartitionKeyName": "id",
+        "Region": "sa-east-1",
+        "Arn": "arn:aws:dynamodb:sa-east-1:580325682616:table/campaigns-production",
+        "StreamArn": "arn:aws:dynamodb:sa-east-1:580325682616:table/campaigns-production/stream/2022-05-30T07:49:06.544",
+        "PartitionKeyType": "N",
+        "Name": "campaigns-production"
+      },
+      "lastPushDirHash": "8BtHDQe2YbGxekCT0QStBfdgGO4="
+    }
+  },
+  "function": {
+    "createCampaign": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "DonationCampaigns",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ],
+      "lastBuildTimeStamp": "2022-05-30T07:48:46.391Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2022-05-30T07:48:46.703Z",
+      "distZipFilename": "createCampaign-6d4b6d366a6b70463770-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-cryptonate-production-64400-deployment",
+        "s3Key": "amplify-builds/createCampaign-6d4b6d366a6b70463770-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cryptonate-production-64400-deployment/amplify-cfn-templates/function/createCampaign-cloudformation-template.json",
+        "logicalId": "functioncreateCampaign"
+      },
+      "lastPushTimeStamp": "2022-05-30T07:51:26.135Z",
+      "output": {
+        "Region": "sa-east-1",
+        "Arn": "arn:aws:lambda:sa-east-1:580325682616:function:createCampaign-production",
+        "Name": "createCampaign-production",
+        "LambdaExecutionRole": "finalprojectLambdaRole40f41cab-production"
+      },
+      "lastPushDirHash": "dBdNBP4SHGM4/vr/bDiItB4Npiw="
     }
   }
 }

@@ -1,0 +1,10 @@
+{
+  "resourceName": "DonationCampaigns",
+  "tableName": "campaigns",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "number"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

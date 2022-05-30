@@ -1,5 +1,5 @@
 {
-  "Description": "Root Stack for AWS Amplify CLI",
+  "Description": "Root Stack for AWS Amplify Console",
   "AWSTemplateFormatVersion": "2010-09-09",
   "Parameters": {
     "DeploymentBucketName": {
@@ -149,6 +149,41 @@
         },
         "RoleName": {
           "Ref": "UnauthRoleName"
+        }
+      }
+    },
+    "storageDonationCampaigns": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-cryptonate-production-64400-deployment/amplify-cfn-templates/storage/DonationCampaigns-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "campaigns",
+          "partitionKeyName": "id",
+          "partitionKeyType": "N",
+          "env": "production"
+        }
+      }
+    },
+    "functioncreateCampaign": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-cryptonate-production-64400-deployment/amplify-cfn-templates/function/createCampaign-cloudformation-template.json",
+        "Parameters": {
+          "deploymentBucketName": "amplify-cryptonate-production-64400-deployment",
+          "s3Key": "amplify-builds/createCampaign-6d4b6d366a6b70463770-build.zip",
+          "storageDonationCampaignsName": {
+            "Fn::GetAtt": [
+              "storageDonationCampaigns",
+              "Outputs.Name"
+            ]
+          },
+          "storageDonationCampaignsArn": {
+            "Fn::GetAtt": [
+              "storageDonationCampaigns",
+              "Outputs.Arn"
+            ]
+          },
+          "env": "production"
         }
       }
     }
