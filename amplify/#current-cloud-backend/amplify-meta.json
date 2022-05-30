@@ -1,0 +1,15 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-cryptonate-dev-202449-authRole",
+      "UnauthRoleArn": "arn:aws:iam::580325682616:role/amplify-cryptonate-dev-202449-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::580325682616:role/amplify-cryptonate-dev-202449-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-cryptonate-dev-202449-deployment",
+      "UnauthRoleName": "amplify-cryptonate-dev-202449-unauthRole",
+      "StackName": "amplify-cryptonate-dev-202449",
+      "StackId": "arn:aws:cloudformation:us-east-1:580325682616:stack/amplify-cryptonate-dev-202449/44d5f0d0-b3a5-11ec-87dd-0e1dbb4bce1b",
+      "AmplifyAppId": "dlp5egh4usn93"
+    }
+  }
+}
