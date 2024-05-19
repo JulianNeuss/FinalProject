@@ -5,238 +5,253 @@ import Layout from "../src/layouts/Layout";
 import { projectSliderOne, projectSliderTwo } from "../src/sliderProps";
 
 const Index = () => {
-  return (
-    <Layout transparentHeader transparentTop footerSolidBg>
-      <section className="hero-area-one">
-        <div className="hero-text">
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-xl-10">
-                <h1 className="title wow fadeInUp" data-wow-delay="0.4s">
-                  Decentralized Crowdfunding
-                </h1>
-                <Link href="/projects">
-                  <a className="main-btn wow fadeInUp" data-wow-delay="0.5s">
-                    Explore Projects <i className="far fa-arrow-right" />
-                  </a>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="hero-shapes">
-            <div className="hero-line-one">
-              <img src="assets/img/hero/hero-line.png" alt="Line" />
-            </div>
-            <div className="hero-line-two">
-              <img src="assets/img/hero/hero-line-2.png" alt="Line" />
-            </div>
-            <div className="dot-one" />
-            <div className="dot-two" />
-          </div>
-        </div>
-        <div className="hero-images">
-          <div
-            className="hero-img image-small fancy-bottom wow fadeInLeft"
-            data-wow-delay="0.6s"
-          >
-            <img src="assets/img/hero/hero-one-small.jpg" alt="Image" />
-          </div>
-          <div className="hero-img main-img wow fadeInUp" data-wow-delay="0.5s">
-            <img src="assets/img/hero/hero-one-big.jpg" alt="Image" />
-          </div>
-          <div
-            className="hero-img image-small fancy-top wow fadeInRight"
-            data-wow-delay="0.7s"
-          >
-            <img src="assets/img/hero/hero-one-small-2.jpg" alt="Image" />
-          </div>
-        </div>
-      </section>
-      {/*====== Hero Area End ======*/}
-      {/*====== Categories Section Start ======*/}
-      <section className="popular-categories section-gap">
-        <div className="container">
-          <div className="categories-header">
-            <div className="row align-items-center justify-content-between">
-              <div className="col-auto">
-                <div className="common-heading mb-30">
-                  <span className="tagline">
-                    <i className="fas fa-plus" /> what we do
-                    <span className="heading-shadow-text">Category</span>
-                  </span>
-                  <h2 className="title">Popular Categories</h2>
-                </div>
-              </div>
-              <div className="col-auto">
-                <Link href="/projects">
-                  <a className="main-btn mb-30">
-                    View All Category <i className="far fa-angle-right" />
-                  </a>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="row justify-content-center fancy-icon-boxes">
-            <div
-              className="col-xl-4 col-md-6 col-sm-10 wow fadeInUp"
-              data-wow-delay="0s"
-            >
-              <div className="fancy-box-item mt-30">
-                <div className="icon">
-                  <i className="flaticon-reading-book" />
-                </div>
-                <div className="content">
-                  <h4 className="title">
-                    <Link href="/projects">
-                      <a>Education</a>
-                    </Link>
-                  </h4>
-                  <p>School, Collage &amp; University</p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-xl-4 col-md-6 col-sm-10 wow fadeInUp"
-              data-wow-delay="0.1s"
-            >
-              <div className="fancy-box-item mt-30">
-                <div className="icon">
-                  <i className="flaticon-stethoscope" />
-                </div>
-                <div className="content">
-                  <h4 className="title">
-                    <Link href="/projects">
-                      <a>Medical &amp; Health</a>
-                    </Link>
-                  </h4>
-                  <p>School, Collage &amp; University</p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-xl-4 col-md-6 col-sm-10 wow fadeInUp"
-              data-wow-delay="0.2s"
-            >
-              <div className="fancy-box-item mt-30">
-                <div className="icon">
-                  <i className="flaticon-tshirt-1" />
-                </div>
-                <div className="content">
-                  <h4 className="title">
-                    <Link href="/projects">
-                      <a>Clothes</a>
-                    </Link>
-                  </h4>
-                  <p>School, Collage &amp; University</p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-xl-4 col-md-6 col-sm-10 wow fadeInUp"
-              data-wow-delay="0.3s"
-            >
-              <div className="fancy-box-item mt-30">
-                <div className="icon">
-                  <i className="flaticon-video-camera" />
-                </div>
-                <div className="content">
-                  <h4 className="title">
-                    <Link href="/projects">
-                      <a>Video &amp; Films</a>
-                    </Link>
-                  </h4>
-                  <p>School, Collage &amp; University</p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-xl-4 col-md-6 col-sm-10 wow fadeInUp"
-              data-wow-delay="0.4s"
-            >
-              <div className="fancy-box-item mt-30">
-                <div className="icon">
-                  <i className="flaticon-project-management" />
-                </div>
-                <div className="content">
-                  <h4 className="title">
-                    <Link href="/projects">
-                      <a>Technology</a>
-                    </Link>
-                  </h4>
-                  <p>School, Collage &amp; University</p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-xl-4 col-md-6 col-sm-10 wow fadeInUp"
-              data-wow-delay="0.5s"
-            >
-              <div className="fancy-box-item mt-30">
-                <div className="icon">
-                  <i className="flaticon-salad" />
-                </div>
-                <div className="content">
-                  <h4 className="title">
-                    <Link href="/projects">
-                      <a>Organic Foods</a>
-                    </Link>
-                  </h4>
-                  <p>School, Collage &amp; University</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/*====== Categories Section End ======*/}
-      {/*====== About Section Start ======*/}
-      <section className="about-section-one">
-        <div className="container">
-          <div className="row align-items-center justify-content-lg-start justify-content-center">
-            <div className="col-xl-6 col-lg-7 col-md-9">
-              <div className="about-img">
-                <img src="assets/img/about/about-one.jpg" alt="Image" />
-              </div>
-            </div>
-            <div className="col-xl-4 col-lg-5 col-md-10 offset-xl-1">
-              <div className="about-text mt-md-70 mb-md-50">
-                <div className="common-heading mb-30">
-                  <span className="tagline">
-                    <i className="fas fa-plus" /> who we are
-                    <span className="heading-shadow-text">About Us</span>
-                  </span>
-                  <h2 className="title">Why Choose Us</h2>
-                </div>
-                <p>
-                  Built this project with huge passion for my Computer Science
-                  final thesis.
-                </p>
-                <div className="author-note wow fadeInUp">
-                  <ul>
-                    <li>
-                      <i className="far fa-check" /> Help achieve
-                      decentralization
-                    </li>
-                    <li>
-                      <i className="far fa-check" /> {`Foster entrepreneurship`}{" "}
-                    </li>
-                  </ul>
-                  <div className="author-info">
-                    <div className="author-img">
-                      <img src="assets/img/author-thumbs/01.jpg" alt="Image" />
-                    </div>
-                    <h5 className="name">Julian J. Neuss</h5>
-                    <span className="title">Founder</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/*====== About Section End ======*/}
-      {/*====== Project Section Start ======*/}
-      {/* <section className="project-section project-section-extra-gap secondary-bg">
+	return (
+		<Layout
+			transparentHeader
+			transparentTop
+			footerSolidBg>
+			<section className="hero-area-one">
+				<div className="hero-text">
+					<div className="container">
+						<div className="row justify-content-center">
+							<div className="col-xl-10">
+								<h1
+									className="title wow fadeInUp"
+									data-wow-delay="0.4s">
+									Decentralized Crowdfunding
+								</h1>
+								<Link href="/projects">
+									<a
+										className="main-btn wow fadeInUp"
+										data-wow-delay="0.5s">
+										Explore Campaigns <i className="far fa-arrow-right" />
+									</a>
+								</Link>
+							</div>
+						</div>
+					</div>
+					<div className="hero-shapes">
+						<div className="hero-line-one">
+							<img
+								src="assets/img/hero/hero-line.png"
+								alt="Line"
+							/>
+						</div>
+						<div className="hero-line-two">
+							<img
+								src="assets/img/hero/hero-line-2.png"
+								alt="Line"
+							/>
+						</div>
+						<div className="dot-one" />
+						<div className="dot-two" />
+					</div>
+				</div>
+				<div className="hero-images">
+					<div
+						className="hero-img image-small fancy-bottom wow fadeInLeft"
+						data-wow-delay="0.6s">
+						<img
+							src="assets/img/hero/hero-one-small.jpg"
+							alt="Image"
+						/>
+					</div>
+					<div
+						className="hero-img main-img wow fadeInUp"
+						data-wow-delay="0.5s">
+						<img
+							src="assets/img/hero/hero-one-big.jpg"
+							alt="Image"
+						/>
+					</div>
+					<div
+						className="hero-img image-small fancy-top wow fadeInRight"
+						data-wow-delay="0.7s">
+						<img
+							src="assets/img/hero/hero-one-small-2.jpg"
+							alt="Image"
+						/>
+					</div>
+				</div>
+			</section>
+			{/*====== Hero Area End ======*/}
+			{/*====== Categories Section Start ======*/}
+			<section className="popular-categories section-gap">
+				<div className="container">
+					<div className="categories-header">
+						<div className="row align-items-center justify-content-between">
+							<div className="col-auto">
+								<div className="common-heading mb-30">
+									<span className="tagline">
+										<i className="fas fa-plus" /> what we do
+										<span className="heading-shadow-text">Category</span>
+									</span>
+									<h2 className="title">Popular Categories</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div className="row justify-content-center fancy-icon-boxes">
+						<div
+							className="col-xl-4 col-md-6 col-sm-10 wow fadeInUp"
+							data-wow-delay="0s">
+							<div className="fancy-box-item mt-30">
+								<div className="icon">
+									<i className="flaticon-reading-book" />
+								</div>
+								<div className="content">
+									<h4 className="title">
+										<Link href="/projects">
+											<a>Education</a>
+										</Link>
+									</h4>
+									<p>School, Collage &amp; University</p>
+								</div>
+							</div>
+						</div>
+						<div
+							className="col-xl-4 col-md-6 col-sm-10 wow fadeInUp"
+							data-wow-delay="0.1s">
+							<div className="fancy-box-item mt-30">
+								<div className="icon">
+									<i className="flaticon-stethoscope" />
+								</div>
+								<div className="content">
+									<h4 className="title">
+										<Link href="/projects">
+											<a>Medical &amp; Health</a>
+										</Link>
+									</h4>
+									<p>School, Collage &amp; University</p>
+								</div>
+							</div>
+						</div>
+						<div
+							className="col-xl-4 col-md-6 col-sm-10 wow fadeInUp"
+							data-wow-delay="0.2s">
+							<div className="fancy-box-item mt-30">
+								<div className="icon">
+									<i className="flaticon-tshirt-1" />
+								</div>
+								<div className="content">
+									<h4 className="title">
+										<Link href="/projects">
+											<a>Clothes</a>
+										</Link>
+									</h4>
+									<p>School, Collage &amp; University</p>
+								</div>
+							</div>
+						</div>
+						<div
+							className="col-xl-4 col-md-6 col-sm-10 wow fadeInUp"
+							data-wow-delay="0.3s">
+							<div className="fancy-box-item mt-30">
+								<div className="icon">
+									<i className="flaticon-video-camera" />
+								</div>
+								<div className="content">
+									<h4 className="title">
+										<Link href="/projects">
+											<a>Video &amp; Films</a>
+										</Link>
+									</h4>
+									<p>School, Collage &amp; University</p>
+								</div>
+							</div>
+						</div>
+						<div
+							className="col-xl-4 col-md-6 col-sm-10 wow fadeInUp"
+							data-wow-delay="0.4s">
+							<div className="fancy-box-item mt-30">
+								<div className="icon">
+									<i className="flaticon-project-management" />
+								</div>
+								<div className="content">
+									<h4 className="title">
+										<Link href="/projects">
+											<a>Technology</a>
+										</Link>
+									</h4>
+									<p>School, Collage &amp; University</p>
+								</div>
+							</div>
+						</div>
+						<div
+							className="col-xl-4 col-md-6 col-sm-10 wow fadeInUp"
+							data-wow-delay="0.5s">
+							<div className="fancy-box-item mt-30">
+								<div className="icon">
+									<i className="flaticon-salad" />
+								</div>
+								<div className="content">
+									<h4 className="title">
+										<Link href="/projects">
+											<a>Organic Foods</a>
+										</Link>
+									</h4>
+									<p>School, Collage &amp; University</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			{/*====== Categories Section End ======*/}
+			{/*====== About Section Start ======*/}
+			<section className="about-section-one">
+				<div className="container">
+					<div className="row align-items-center justify-content-lg-start justify-content-center">
+						<div className="col-xl-6 col-lg-7 col-md-9">
+							<div className="about-img">
+								<img
+									src="assets/img/about/about-one.jpg"
+									alt="Image"
+								/>
+							</div>
+						</div>
+						<div className="col-xl-4 col-lg-5 col-md-10 offset-xl-1">
+							<div className="about-text mt-md-70 mb-md-50">
+								<div className="common-heading mb-30">
+									<span className="tagline">
+										<i className="fas fa-plus" /> who we are
+										<span className="heading-shadow-text">About Us</span>
+									</span>
+									<h2 className="title">Why Choose Us</h2>
+								</div>
+								<p>
+									Built this project with huge passion for my Computer Science
+									final thesis.
+								</p>
+								<div className="author-note wow fadeInUp">
+									<ul>
+										<li>
+											<i className="far fa-check" /> Help achieve
+											decentralization
+										</li>
+										<li>
+											<i className="far fa-check" /> {`Foster entrepreneurship`}{" "}
+										</li>
+									</ul>
+									<div className="author-info">
+										<div className="author-img">
+											<img
+												src="assets/img/author-thumbs/01.jpg"
+												alt="Image"
+											/>
+										</div>
+										<h5 className="name">Julian J. Neuss</h5>
+										<span className="title">Founder</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			{/*====== About Section End ======*/}
+			{/*====== Project Section Start ======*/}
+			{/* <section className="project-section project-section-extra-gap secondary-bg">
         <div className="container-fluid fluid-extra-padding">
           <div className="common-heading text-center color-version-white mb-60">
             <span className="tagline">
@@ -621,9 +636,9 @@ const Index = () => {
           </Slider>
         </div>
       </section> */}
-      {/*====== Project Section End ======*/}
-      {/*====== Counter Area Start ======*/}
-      {/* <section className="counter-section-one mt-negative">
+			{/*====== Project Section End ======*/}
+			{/*====== Counter Area Start ======*/}
+			{/* <section className="counter-section-one mt-negative">
         <div className="container primary-bg">
           <div className="row counter-boxes justify-content-xl-between justify-content-center">
             <div className="col-xl-auto col-lg-5 col-md-5 col-sm-6">
@@ -685,9 +700,9 @@ const Index = () => {
           </div>
         </div>
       </section> */}
-      {/*====== Counter Area End ======*/}
-      {/*====== Testimonials Start ======*/}
-      {/* <section className="testimonials-section section-gap">
+			{/*====== Counter Area End ======*/}
+			{/*====== Testimonials Start ======*/}
+			{/* <section className="testimonials-section section-gap">
         <div className="container">
           <div className="row align-items-center justify-content-center">
             <div className="col-xl-4 col-lg-6 col-md-8 col-sm-10">
@@ -978,9 +993,9 @@ const Index = () => {
           </div>
         </div>
       </section> */}
-      {/*====== Testimonials End ======*/}
-      {/*====== Emergency Project & CTA Start ======*/}
-      {/* <section className="emergency-project-with-cta">
+			{/*====== Testimonials End ======*/}
+			{/*====== Emergency Project & CTA Start ======*/}
+			{/* <section className="emergency-project-with-cta">
         <div className="container">
           <div
             className="cta-box cta-double-content"
@@ -1202,9 +1217,9 @@ const Index = () => {
           </div>
         </div>
       </section> */}
-      {/*====== Emergency Project & CTA End ======*/}
-      {/*====== Partners Section Start ======*/}
-      {/* <section className="partners-section section-gap section-border-bottom">
+			{/*====== Emergency Project & CTA End ======*/}
+			{/*====== Partners Section Start ======*/}
+			{/* <section className="partners-section section-gap section-border-bottom">
         <div className="container">
           <div className="common-heading mb-30">
             <span className="tagline">
@@ -1289,9 +1304,9 @@ const Index = () => {
           </div>
         </div>
       </section> */}
-      {/*====== Partners Section End ======*/}
-      {/*====== Latest News Start ======*/}
-      {/* <section className="latest-blog-section section-gap">
+			{/*====== Partners Section End ======*/}
+			{/*====== Latest News Start ======*/}
+			{/* <section className="latest-blog-section section-gap">
         <div className="container">
           <div className="common-heading text-center mb-30">
             <span className="tagline">
@@ -1382,8 +1397,8 @@ const Index = () => {
           </div>
         </div>
       </section> */}
-    </Layout>
-  );
+		</Layout>
+	);
 };
 
 export default Index;

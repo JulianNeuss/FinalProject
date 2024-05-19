@@ -1,23 +1,34 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import PageBanner from "../src/components/PageBanner";
-import Layout from "../src/layouts/Layout";
+import PageBanner from "../../src/components/PageBanner";
+import Layout from "../../src/layouts/Layout";
 import axios from "axios";
+import ReactMarkdown from "react-markdown";
+import { getPolygonBalance, getPolygonTransactions } from "../utils/polygon";
 
 const ProjectDetails = () => {
 	const router = useRouter();
 	const { id } = router.query;
 	const [campaign, setCampaign] = useState(null);
+	const [transactions, setTransactions] = useState([]);
+	const [showModal, setShowModal] = useState(false);
 
 	useEffect(() => {
 		if (id) {
 			const fetchCampaign = async () => {
 				try {
 					const response = await axios.get(
-						`https://yatocx4w17.execute-api.sa-east-1.amazonaws.com/Prod/GetCampaignByID/${id}`
+						`https://yatocx4w17.execute-api.sa-east-1.amazonaws.com/Prod/GetCampaignByID?id=${id}`
 					);
-					setCampaign(response.data.campaign);
+					const campaignData = response.data.campaign;
+					const balance = await getPolygonBalance(campaignData.wallet_address);
+					const transactionHistory = await getPolygonTransactions(
+						campaignData.wallet_address
+					);
+
+					setCampaign({ ...campaignData, raised: balance });
+					setTransactions(transactionHistory);
 				} catch (error) {
 					console.error("Error fetching campaign details:", error);
 				}
@@ -30,6 +41,14 @@ const ProjectDetails = () => {
 	if (!campaign) {
 		return <div>Loading...</div>;
 	}
+
+	const handleDonateClick = () => {
+		setShowModal(true);
+	};
+
+	const handleCloseModal = () => {
+		setShowModal(false);
+	};
 
 	return (
 		<Layout>
@@ -53,11 +72,11 @@ const ProjectDetails = () => {
 								<h3 className="project-title">{campaign.title}</h3>
 								<div className="meta">
 									<div className="author">
-										<img
-											src="assets/img/author-thumbs/03.jpg"
+										{/* <img
+											src="/assets/img/author-thumbs/03.jpg"
 											alt="Thumb"
-										/>
-										<a href="#">{campaign.organizer_name}</a>
+										/> */}
+										{/* <a href="#">{campaign.organizer_name}</a> */}
 									</div>
 									<a
 										href="#"
@@ -68,7 +87,7 @@ const ProjectDetails = () => {
 								</div>
 								<div className="project-funding-info">
 									<div className="info-box">
-										<span>${campaign.raised}</span>
+										<span>{campaign.raised} MATIC</span>
 										<span className="info-title">Pledged</span>
 									</div>
 									<div className="info-box">
@@ -83,7 +102,7 @@ const ProjectDetails = () => {
 								<div className="project-raised clearfix">
 									<div className="d-flex align-items-center justify-content-between">
 										<div className="raised-label">
-											Raised of ${campaign.max_amount}
+											Raised {campaign.raised} of {campaign.max_amount} MATIC
 										</div>
 										<div className="percent-raised">
 											{Math.min(
@@ -105,16 +124,10 @@ const ProjectDetails = () => {
 									<form
 										onSubmit={(e) => e.preventDefault()}
 										action="#">
-										<ul className="donation-amount">
-											<li>$5</li>
-											<li>$50</li>
-											<li>$180</li>
-											<li>$500</li>
-											<li>$1000</li>
-										</ul>
 										<button
-											type="submit"
-											className="main-btn">
+											type="button"
+											className="main-btn"
+											onClick={handleDonateClick}>
 											Donate Now <i className="far fa-arrow-right" />
 										</button>
 									</form>
@@ -131,80 +144,43 @@ const ProjectDetails = () => {
 										id="description"
 										role="tabpanel">
 										<div className="row justify-content-center">
-											<div className="col-lg-8">
+											<div className="col-lg-12">
 												<div className="description-content">
 													<h4 className="description-title">
 														{campaign.title}
 													</h4>
-													<p>{campaign.description}</p>
-													<img
-														className="mt-50 mb-50"
-														src={campaign.banner_image}
-														alt="Image"
-													/>
+													<ReactMarkdown>{campaign.description}</ReactMarkdown>
 													<h4 className="description-title">
-														Why Donate Our Products
+														Transaction History
 													</h4>
-													<p>
-														Nemo enim ipsam voluptatem quia voluptas sit
-														aspernatur aut odit aut fugit, sed quia consequuntur
-														magni dolores eos qui ratione voluptatem sequi
-														nesciunt. Neque porro quisquam est, qui dolorem
-														ipsum quia dolor sit amet, consectetur, adipisci
-														velit, sed quia non numquam eius modi temporadunt ut
-														labore et dolore magnam aliquam quaerat voluptate
-														enim ad minima veniam suscipit
-													</p>
-													<ul className="description-list">
-														<li>Standard Lorem Sum Passage Used</li>
-														<li>Build A Music Manager With Nuxt</li>
-														<li>A Foldable Web Actually Mean</li>
-														<li>Upcoming Web Design Conferences</li>
-													</ul>
-													<p>
-														But I must explain to you how all this mistaken idea
-														of denouncing pleasure and praising pain was born
-														and I will give you a complete account of the
-														system, and expound the actual teachings of the
-														great explorer of the truth, the master-builder of
-														human happiness. No one rejects, dislikes,
-													</p>
-												</div>
-											</div>
-											<div className="col-lg-4 col-md-6 col-sm-10">
-												<div className="rewards-box">
-													<h4 className="title">Rewards</h4>
-													<img
-														src="assets/img/project/project-rewards.jpg"
-														alt="Image"
-														className="w-100"
-													/>
-													<span className="rewards-count">
-														<span>$530</span> or More
-													</span>
-													<p>
-														But must explain to you how all this mistaken idea
-														of denouncing plasue and praising pain was born
-													</p>
-													<div className="delivery-date">
-														<span>25 Mar 20210</span>
-														Estimated Delivery
+													<div className="table-responsive">
+														<table className="table table-striped table-bordered w-100">
+															<thead className="thead-dark">
+																<tr>
+																	<th>Hash</th>
+																	<th>From</th>
+																	<th>To</th>
+																	<th>Value (MATIC)</th>
+																	<th>Date</th>
+																</tr>
+															</thead>
+															<tbody>
+																{transactions.map((tx) => (
+																	<tr key={tx.hash}>
+																		<td>{tx.hash}</td>
+																		<td>{tx.from}</td>
+																		<td>{tx.to}</td>
+																		<td>{tx.value / Math.pow(10, 18)}</td>
+																		<td>
+																			{new Date(
+																				tx.timeStamp * 1000
+																			).toLocaleDateString()}
+																		</td>
+																	</tr>
+																))}
+															</tbody>
+														</table>
 													</div>
-													<ul className="rewards-info">
-														<li>
-															<i className="far fa-user-circle" />5 Backers
-														</li>
-														<li>
-															<i className="far fa-trophy-alt" />
-															29 Rewards Left
-														</li>
-													</ul>
-													<Link href="/events">
-														<a className="main-btn">
-															Select Rewards{" "}
-															<i className="far fa-arrow-right" />
-														</a>
-													</Link>
 												</div>
 											</div>
 										</div>
@@ -233,6 +209,71 @@ const ProjectDetails = () => {
 					</div>
 				</div>
 			</section>
+
+			{showModal && (
+				<div className="modal">
+					<div className="modal-content">
+						<span
+							className="close"
+							onClick={handleCloseModal}>
+							&times;
+						</span>
+						<h2>Donate to {campaign.title}</h2>
+						<p>To donate, please send MATIC to the following wallet address:</p>
+						<p className="wallet-address">{campaign.wallet_address}</p>
+					</div>
+				</div>
+			)}
+
+			<style jsx>{`
+				.modal {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					position: fixed;
+					z-index: 1;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+					overflow: auto;
+					background-color: rgb(0, 0, 0);
+					background-color: rgba(0, 0, 0, 0.4);
+				}
+
+				.modal-content {
+					background-color: #fefefe;
+					margin: 15% auto;
+					padding: 20px;
+					border: 1px solid #888;
+					width: 80%;
+					max-width: 600px;
+					border-radius: 10px;
+					text-align: center;
+				}
+
+				.close {
+					color: #aaa;
+					float: right;
+					font-size: 28px;
+					font-weight: bold;
+				}
+
+				.close:hover,
+				.close:focus {
+					color: black;
+					text-decoration: none;
+					cursor: pointer;
+				}
+
+				.wallet-address {
+					font-family: monospace;
+					font-size: 1.2em;
+					background: #f4f4f4;
+					padding: 10px;
+					border-radius: 5px;
+				}
+			`}</style>
 		</Layout>
 	);
 };
