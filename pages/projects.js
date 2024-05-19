@@ -3,7 +3,7 @@ import Link from "next/link";
 import PageBanner from "../src/components/PageBanner";
 import Layout from "../src/layouts/Layout";
 import axios from "axios";
-import { getPolygonBalance } from "./utils/polygon"; // Import the utility function
+import { getPolygonBalance } from "../utils/polygon"; // Import the utility function
 
 const Project3 = () => {
 	const [campaigns, setCampaigns] = useState([]);

@@ -5,7 +5,7 @@ import PageBanner from "../../src/components/PageBanner";
 import Layout from "../../src/layouts/Layout";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
-import { getPolygonBalance, getPolygonTransactions } from "../utils/polygon";
+import { getPolygonBalance, getPolygonTransactions } from "../../utils/polygon";
 
 const ProjectDetails = () => {
 	const router = useRouter();
