@@ -12,7 +12,7 @@ const Project3 = () => {
 		const fetchCampaigns = async () => {
 			try {
 				const response = await axios.get(
-					"https://yatocx4w17.execute-api.sa-east-1.amazonaws.com/Prod/GetCampaigns"
+					"https://cfvf867puh.execute-api.us-east-1.amazonaws.com/default/getCampaign"
 				);
 				console.log("Response Data:", response.data); // Log the entire response
 

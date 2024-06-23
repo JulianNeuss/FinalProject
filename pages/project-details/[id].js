@@ -19,7 +19,7 @@ const ProjectDetails = () => {
 			const fetchCampaign = async () => {
 				try {
 					const response = await axios.get(
-						`https://yatocx4w17.execute-api.sa-east-1.amazonaws.com/Prod/GetCampaignByID?id=${id}`
+						`https://cfvf867puh.execute-api.us-east-1.amazonaws.com/default/getCampaignByID?id=${id}`
 					);
 					const campaignData = response.data.campaign;
 					const balance = await getPolygonBalance(campaignData.wallet_address);
