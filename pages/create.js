@@ -79,7 +79,7 @@ const Create = () => {
 
 		try {
 			const response = await axios.post(
-				"https://yatocx4w17.execute-api.sa-east-1.amazonaws.com/Prod/campaign",
+				"https://cfvf867puh.execute-api.us-east-1.amazonaws.com/default/createCampaign",
 				campaignData,
 				{
 					headers: {
@@ -103,7 +103,7 @@ const Create = () => {
 
 			// Call your Lambda function to get the pre-signed URL
 			const presignedResponse = await axios.get(
-				"https://yatocx4w17.execute-api.sa-east-1.amazonaws.com/Prod/getPresignedUrlAndUpload",
+				"https://cfvf867puh.execute-api.us-east-1.amazonaws.com/default/getPresignedUrlForS3Upload",
 				{
 					params: {
 						fileName: fileName,
@@ -112,9 +112,7 @@ const Create = () => {
 				}
 			);
 
-			// Parse the response body to get the pre-signed URL
-			const responseBody = JSON.parse(presignedResponse.data.body);
-			const presignedUrl = responseBody.uploadUrl;
+			const presignedUrl = presignedResponse.data.uploadUrl
 			console.log("Presigned URL:", presignedUrl);
 
 			// Use the pre-signed URL to upload the file
